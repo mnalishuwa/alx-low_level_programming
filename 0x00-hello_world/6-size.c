@@ -1,12 +1,19 @@
 #include <stdio.h>
 #include <stdint.h>
 
+/**
+ * main - program start
+ * Description: Print out the size in bytes of int, char, long, float
+ * Return: 0 (Success)
+ */
+
 int main(void)
 {
-  printf("Size of a char: %lu bytes(s)\n", (unsigned long)sizeof(char));
-  printf("Size of an int: %lu byte(s)\n", (unsigned long)sizeof(int));
-  printf("Size of a long int: %lu byte(s)\n", (unsigned long)sizeof(long int));
-  printf("Size of a long long int: %lu byte(s)\n", (unsigned long)sizeof(int64_t));
-  printf("Size of a float: %lu byte(s)\n", (unsigned long)sizeof(float));
-  return (0);
+printf("Size of a char: %lu bytes(s)\n", (unsigned long)sizeof(char));
+printf("Size of an int: %lu byte(s)\n", (unsigned long)sizeof(int));
+printf("Size of a long int: %lu byte(s)\n", (unsigned long)sizeof(long int));
+printf("Size of a long long int: %lu byte(s)\n",\
+(unsigned long)sizeof(int64_t));
+printf("Size of a float: %lu byte(s)\n", (unsigned long)sizeof(float));
+return (0);
 }
