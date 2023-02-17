@@ -2,18 +2,17 @@
 
 /**
  * main: program start
- * Description: Print alphabet using putchar()
+ * Description: Print single digit base 10 numbers
  * Return: 0 (Success)
  */
 
 int main(void)
 {
-  char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\n";
   int i;
   
-  for (i = 0; alphabet[i] != '\0'; i++)
+  for (i = 0; i < 10; i++)
   {
-    putchar(alphabet[i]);
+    printf("%d\n", i);
   }
 
   return (0);
