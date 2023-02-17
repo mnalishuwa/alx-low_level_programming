@@ -13,7 +13,7 @@ int main(void)
   
   for (i = 0; alphabet[i] != '\0'; i++)
   {
-    if (alphabet[i] != 'q' || alphabet[i] != 'e')
+    if (i != 4 && i != 16)
     {
       putchar(alphabet[i]);
     }
