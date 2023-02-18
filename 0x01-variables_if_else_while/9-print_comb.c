@@ -1,11 +1,9 @@
 #include <stdio.h>
-
 /**
  * main - program start
  * Description: Print single digit numbers using putchar function
  * Return: 0 (Success)
  */
-
 int main(void)
 {
 int i;
