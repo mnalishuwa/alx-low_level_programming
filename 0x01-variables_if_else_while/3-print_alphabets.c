@@ -8,13 +8,13 @@
 
 int main(void)
 {
-  char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\n";
-  int i;
-  
-  for (i = 0; alphabet[i] != '\0'; i++)
-  {
-    putchar(alphabet[i]);
-  }
+        char alphabet[] =
+            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\n";
+        int i;
 
-  return (0);
+        for (i = 0; alphabet[i] != '\0'; i++) {
+                putchar(alphabet[i]);
+        }
+
+        return (0);
 }
