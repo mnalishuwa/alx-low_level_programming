@@ -14,25 +14,19 @@ int main(void)
 	{
 		for (j = 48; j < 58; j++)
 		{
-			for (k = 48; k < 58; k++)
+			for (k = i; k < 58; k++)
 			{
-				for (l = k + 1; l < 58; l++)
+				for (l = j + 1; l < 58; l++)
 				{
 					putchar(i);
 					putchar(j);
 					putchar(32);
 					putchar(k);
 					putchar(l);
-					if (i != 57 && j != 57 && k != 57)
-					{
-						putchar(44);
-						putchar(32);
-					}
-					else
-					{
-						putchar(10);
-					}
+					putchar(44);
+					putchar(32);
 				}
+				l = 48;
 			}
 		}
 	}
