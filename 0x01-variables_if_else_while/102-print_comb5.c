@@ -23,8 +23,19 @@ int main(void)
 					putchar(32);
 					putchar(k);
 					putchar(l);
-					putchar(44);
-					putchar(32);
+					if (i == 57 && j == 56)
+					{
+						if (k == 57 && l == 57)
+						{
+							putchar(10);
+						}
+					}
+					else
+					{
+						putchar(44);
+						putchar(32);
+					}
+					
 				}
 				l = 48;
 			}
