@@ -16,28 +16,23 @@ int main(void)
 		{
 			for (k = i; k < 58; k++)
 			{
-				for (l = j + 1; l < 58; l++)
+				for (l = j; l < 58; l++)
 				{
 					putchar(i);
 					putchar(j);
 					putchar(32);
 					putchar(k);
 					putchar(l);
-					if (i == 57 && j == 56)
+					if ((i == 57 && j == 56) && (k == 57 && l == 57))
 					{
-						if (k == 57 && l == 57)
-						{
-							putchar(10);
-						}
+						putchar(10);
 					}
 					else
 					{
 						putchar(44);
 						putchar(32);
 					}
-					
 				}
-				l = 48;
 			}
 		}
 	}
