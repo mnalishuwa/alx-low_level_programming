@@ -16,8 +16,11 @@ int main(void)
 		{
 			putchar(i);
 			putchar(k);
-			putchar(44);
-			putchar(32);
+			if (i != 56)
+			{
+				putchar(44);
+				putchar(32);
+			}
 		}
 	}
 	return (0);
