@@ -49,3 +49,6 @@ int add(int, int);
 
 /* print_to_98 - print integers from int n to */
 void print_to_98(int n);
+
+/* print_times_table - print an n by n multiplication table */
+void print_times_table(int n);
