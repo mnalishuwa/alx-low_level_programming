@@ -18,4 +18,5 @@ int main(void)
 			result = result + i;
 	}
 	printf("%d\n", result);
+	return (0);
 }
