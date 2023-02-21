@@ -11,7 +11,7 @@ int main(void)
 	int i;
 	char putchar_arr[] = "_putchar";
 
-	for (i = 0; putchar_arr != '\0'; i++)
+	for (i = 0; putchar_arr[i] != '\0'; i++)
 		_putchar(putchar_arr[i]);
 	_putchar('\n');
 
