@@ -40,3 +40,6 @@ int print_last_digit(int);
 
 /* jack_bauer - print each minute in a 24-hour day */
 void jack_bauer(void);
+
+/* times_table - print the multiplication table for 0 - 9 */
+void times_table(void);
