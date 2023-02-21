@@ -28,3 +28,6 @@ int _islower(int c);
 
 /* isalpha - check if char is alphabetic */
 int _isalpha(int c);
+
+/* print_sign - check if a number is negative, zero, or positive */
+int print_sign(int n);
