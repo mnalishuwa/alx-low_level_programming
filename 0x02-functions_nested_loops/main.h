@@ -43,3 +43,6 @@ void jack_bauer(void);
 
 /* times_table - print the multiplication table for 0 - 9 */
 void times_table(void);
+
+/* add - return the sum of 2 integers */
+int add(int, int);
