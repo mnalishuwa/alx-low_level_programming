@@ -25,3 +25,6 @@ void print_alphabet_x10(void);
 
 /* _islower - check if char input is lower */
 int _islower(int c);
+
+/* isalpha - check if char is alphabetic */
+int _isalpha(int c);
