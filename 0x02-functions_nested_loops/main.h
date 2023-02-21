@@ -37,3 +37,6 @@ int _abs(int);
 
 /* print_last_digit - return the last digit of a base 10 integer */
 int print_last_digit(int);
+
+/* jack_bauer - print each minute in a 24-hour day */
+void jack_bauer(void);

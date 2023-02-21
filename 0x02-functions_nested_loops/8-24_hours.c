@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * jack_bauer - function to print each minute in a day
+ * Description: Function takes no inputs, prints minutes in 24-hr day
+ * Return: void
+ */
+
 void jack_bauer(void)
 {
 	int j, k, l;
