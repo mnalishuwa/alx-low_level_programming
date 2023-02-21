@@ -8,8 +8,3 @@
  * On error, -1 is returned, and errno is set appropriately.
  */
 int _putchar(char c);
-
-int _putchar(char c)
-{
-	return (write(STDOUT_FILENO, &c, 1));
-}
