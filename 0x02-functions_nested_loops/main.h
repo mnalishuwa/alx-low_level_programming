@@ -46,3 +46,6 @@ void times_table(void);
 
 /* add - return the sum of 2 integers */
 int add(int, int);
+
+/* print_to_98 - print integers from int n to */
+void print_to_98(int n);
