@@ -34,3 +34,6 @@ int print_sign(int n);
 
 /* _abs - compute the absolute value of an integer */
 int _abs(int);
+
+/* print_last_digit - return the last digit of a base 10 integer */
+int print_last_digit(int);
