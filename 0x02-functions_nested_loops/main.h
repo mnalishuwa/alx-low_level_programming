@@ -31,3 +31,6 @@ int _isalpha(int c);
 
 /* print_sign - check if a number is negative, zero, or positive */
 int print_sign(int n);
+
+/* _abs - compute the absolute value of an integer */
+int _abs(int);
