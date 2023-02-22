@@ -9,7 +9,7 @@
 
 int main(void)
 {
-	unsigned long int fib_arr[98] = {0}; /* initialize fib number array */
+	long double fib_arr[98] = {0}; /* initialize fib number array */
 	int i;
 
 	/* set 1st and 2nd array element to hold initial fibonacci numbers */
@@ -18,13 +18,13 @@ int main(void)
 
 	printf("%d, %d, ", FIB1, FIB2);
 	/* loop through and generate successive fib numbers */
-	for (i = FIB2; i < 99; i++)
+	for (i = FIB2; i < 98; i++)
 	{
 		fib_arr[i] = fib_arr[i - 1] + fib_arr[i - 2];
-		if (i == 98)
-			printf("%lu\n", fib_arr[i]);
+		if (i == 97)
+			printf("%.0Lf\n", fib_arr[i]);
 		else
-			printf("%lu, ", fib_arr[i]);
+			printf("%.0Lf, ", fib_arr[i]);
 	}
 	return (0);
 }
