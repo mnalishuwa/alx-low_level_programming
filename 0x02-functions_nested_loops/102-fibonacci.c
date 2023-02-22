@@ -9,7 +9,7 @@
 
 int main(void)
 {
-	int fib_arr[50] = {0}; /* initialize array to hold fib numbers */
+	long int fib_arr[50] = {0}; /* initialize array to hold fib numbers */
 	int i;
 
 	/* set 1st and 2nd array element to hold initial fibonacci numbers */
@@ -22,9 +22,9 @@ int main(void)
 	{
 		fib_arr[i] = fib_arr[i - 1] + fib_arr[i - 2];
 		if (i == 49)
-			printf("%d\n", fib_arr[i]);
+			printf("%ld\n", fib_arr[i]);
 		else
-			printf("%d, ", fib_arr[i]);
+			printf("%ld, ", fib_arr[i]);
 	}
 	return (0);
 }
