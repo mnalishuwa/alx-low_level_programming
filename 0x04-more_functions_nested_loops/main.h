@@ -11,3 +11,6 @@ int _isdigit(int c);
 
 /* mul - takes two ints and returns the product */
 int mul(int a, int b);
+
+/* print_numbers - prints numbers 0 through 9 */
+void print_numbers(void);
