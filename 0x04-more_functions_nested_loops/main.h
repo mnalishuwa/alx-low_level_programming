@@ -23,3 +23,6 @@ void more_numbers(void);
 
 /* print_line - print as line using the underscore character */
 void print_line(int n);
+
+/* print_diagonal - print a diagonal line using the backslash character */
+void print_diagonal(int n);
