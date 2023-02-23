@@ -20,3 +20,6 @@ void print_most_numbers(void);
 
 /* more_numbers - print numbers 0 through 14, 10 times */
 void more_numbers(void);
+
+/* print_line - print as line using the underscore character */
+void print_line(int n);
