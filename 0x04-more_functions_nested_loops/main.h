@@ -26,3 +26,6 @@ void print_line(int n);
 
 /* print_diagonal - print a diagonal line using the backslash character */
 void print_diagonal(int n);
+
+/* print_square - print a square using # character */
+void print_square(int size);
