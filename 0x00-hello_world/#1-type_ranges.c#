@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <limits.h>
+
+/* Program to print out the limits of types char, short, int, long, signed & unsigned */
+
+/**
+ * main: program start
+ * Description: Program to print out max and min values for primitive types
+ * Return: 0 (Success)
+ */
+
+int main(void)
+{
+  printf("Max for unsigned char is %d\n", UCHAR_MAX);
+  printf("Max for unsigned char is %d\n", CHAR_MAX);
+  printf("Max for unsigned char is %d\n", _MAX);
+  
+
+}
