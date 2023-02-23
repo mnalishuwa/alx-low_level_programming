@@ -5,7 +5,6 @@
  * Description: Debugging tests for void positive_or_negative(int i) function
  * Return: 0 (Success)
  */
-
 int main(void)
 {
 	int i;
