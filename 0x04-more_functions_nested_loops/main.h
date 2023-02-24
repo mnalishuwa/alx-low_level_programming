@@ -29,3 +29,6 @@ void print_diagonal(int n);
 
 /* print_square - print a square using # character */
 void print_square(int size);
+
+/* print_triangle - print triangle using # character */
+void print_triangle(int size);
