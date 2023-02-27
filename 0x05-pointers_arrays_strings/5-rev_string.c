@@ -14,9 +14,10 @@ void rev_string(char *s)
 {
 	char *rev_s;
 	int len_s, i, j;
+
 	i = 0;
 
-	for (len_s = 0; *(s +len_s) != '\0'; len_s++)
+	for (len_s = 0; *(s + len_s) != '\0'; len_s++)
 		;
 	rev_s = malloc(len_s * sizeof(char));
 
