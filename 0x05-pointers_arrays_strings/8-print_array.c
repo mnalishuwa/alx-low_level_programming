@@ -15,6 +15,12 @@ void print_array(int *a, int n)
 {
 	int char_index;
 
+	if (n <= 0)
+	{
+		printf("\n");
+		return;
+	}
+
 	for (char_index = 0; char_index <= n; char_index++)
 	{
 		if (char_index == n - 1)
