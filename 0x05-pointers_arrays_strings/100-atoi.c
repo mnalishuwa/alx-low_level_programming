@@ -11,20 +11,21 @@
 
 int _atoi(char *s)
 {
-	int s_num, first_dgt, first_dgt_pos;
+	int s_num, first_dgt, _negatives;
 	int i, j;
 
 	first_dgt = 0;
-	first_dgt_pos = -1;
+	_negatives = 0;
 	s_num = 0;
 
 	for (i = 0; *(s + i) != '\0'; i++)
 	{
+		if (*(s + i) == 45)
+			_negatives += 1;
 		if (*(s + i) > 47 && *(s + i) < 58)
 		{
 			if (!first_dgt)
 			{
-				first_dgt_pos = i;
 				first_dgt = 1;
 				for (j = i; *(s + j) != '\0' && (*(s + j) > 47 && *(s + j) < 58); j++)
 				{
@@ -35,9 +36,7 @@ int _atoi(char *s)
 		}
 	}
 
-	if (first_dgt_pos > 0 && *(s + first_dgt_pos - 1) == 45)
-	{
+	if (_negatives % 2 == 1)
 		s_num = -1 * s_num;
-	}
 	return (s_num);
 }
