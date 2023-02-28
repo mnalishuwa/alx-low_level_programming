@@ -29,14 +29,15 @@ int _atoi(char *s)
 				first_dgt = 1;
 				for (j = i; *(s + j) != '\0' && (*(s + j) > 47 && *(s + j) < 58); j++)
 				{
-					s_num = s_num * 10 + (*(s + j) - 48);
+					if (_negatives % 2 == 1)
+						s_num = s_num * 10 + (-1 * (*(s + j) - 48));
+					else
+						s_num = s_num * 10 + (*(s + j) - 48);
 				}
 				break;
 			}
 		}
 	}
 
-	if (_negatives % 2 == 1)
-		s_num = -1 * s_num;
 	return (s_num);
 }
