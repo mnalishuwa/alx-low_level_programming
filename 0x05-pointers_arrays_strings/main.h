@@ -32,3 +32,6 @@ void print_array(int *a, int n);
 
 /* *_strcpy - on string to a memory location */
 char *_strcpy(char *dest, char *src);
+
+/* _atoi - extract and print first number found in a string */
+int _atoi(char *s);
