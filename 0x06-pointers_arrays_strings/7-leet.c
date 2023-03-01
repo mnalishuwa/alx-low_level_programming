@@ -1,5 +1,5 @@
 #include "main.h"
-#define UPER_DST 32
+#define UP_DST 32
 /**
  * leet - encodes a string to 1337
  * Description: encodes a string into leet 1337, where letters a, e, o, t, l
@@ -20,7 +20,7 @@ char *leet(char *s)
 	{
 		for (kpos = 0; *(_key + kpos) != '\0'; kpos++)
 		{
-			if (*(s + pos) == *(_key + kpos) || *(s + pos) == *(_key + kpos - UPER_DST))
+			if (*(s + pos) == *(_key + kpos) || *(s + pos) == (*(_key + kpos) - UP_DST))
 				*(s + pos) = *(_leet + kpos);
 /*			break; */
 		}
