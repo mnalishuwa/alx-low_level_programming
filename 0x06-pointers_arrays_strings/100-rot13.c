@@ -13,7 +13,7 @@
 
 char *rot13(char *s)
 {
-	int i;
+	int i, j;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
@@ -21,7 +21,7 @@ char *rot13(char *s)
 		{
 			s[i] = 'a' + ((s[i] - 'a' + ROT) % ALPHA_LEN);
 		}
-		else if (s[i] >= 'A' && s[i] <= 'Z')
+		for (j = 0; j < 1  && (s[i] >= 'A' && s[i] <= 'Z'); j++)
 		{
 			s[i] = 'A' + ((s[i] - 'A' + ROT) % ALPHA_LEN);
 		}
