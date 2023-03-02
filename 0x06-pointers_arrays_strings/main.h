@@ -26,3 +26,6 @@ char *cap_string(char *);
 
 /* leet - converts a string to leet 1337 */
 char *leet(char *);
+
+/* rot13 - applies a caesar cypher, shift +13 on a string s */
+char *rot13(char *);
