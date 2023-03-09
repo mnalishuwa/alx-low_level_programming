@@ -21,3 +21,8 @@ int _sqrt_recursion(int n);
 
 /* is_prime_number - checks if an integer is a prime number */
 int is_prime_number(int n);
+
+/* is_palindrome - check if a string is a palindrome */
+int is_palindrome(char *s);
+/* is_pal_helper - is_palindrome helper function */
+int is_pal_helper(char *s, int frst_c, int lst_c);
