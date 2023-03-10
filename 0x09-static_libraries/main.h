@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 /* _putchar - takes an int then prints char to stdout */
 int _putchar(char c);
 /* memset - fills memory with a constant byte */
@@ -9,7 +12,7 @@ char *_strchr(char *s, char c);
 /* _strspn - gets the length of a prefix substring */
 unsigned int _strspn(char *s, char *accept);
 /* _strpbrk - searches a string for a subset of bytes */
-char *_strpbrk(char *s, char * accept);
+char *_strpbrk(char *s, char *accept);
 /* _strstr - locates a substring */
 char *_strstr(char *haystack, char *needle);
 /* _strcat - join two strings */
@@ -50,3 +53,5 @@ int _isupper(int c);
 
 /* _isdigit - takes char c and checks if c is digit 0 through 9 */
 int _isdigit(int c);
+
+#endif
