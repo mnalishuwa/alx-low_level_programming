@@ -5,3 +5,4 @@ main.c
 *.out
 *.c
 *.o
+liball.a
