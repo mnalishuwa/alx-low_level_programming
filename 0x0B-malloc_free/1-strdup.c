@@ -18,15 +18,16 @@ char *_strdup(char *str)
 	int i;
 
 	/* allocate memory */
-	str_cpy = malloc(len_s * sizeof(char));
+	str_cpy = malloc((len_s + 1) * sizeof(char));
 
 	/* check if str is NULL of if malloc() failed */
-	if (len_s == 0 || str_cpy == NULL)
+	if (len_s == 0 || str == NULL || str_cpy == NULL)
 		return (NULL);
 
 	/* duplicate string into str_copy */
 	for (i = 0; i < len_s; i++)
 		str_cpy[i] = str[i];
+	str_cpy[i] = '\0';
 
 	return (str_cpy);
 }
