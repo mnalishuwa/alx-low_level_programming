@@ -18,10 +18,10 @@ char *argstostr(int ac, char **av)
 	int args_len_s, len_arg, i, j, k;
 
 	ac--;
-	if (ac == 0 || !av)
+	if (ac < 0 || !av)
 		return (NULL);
 
-	for (i = 1, args_len_s = 0; i <= ac; i++)
+	for (i = 0, args_len_s = 0; i <= ac; i++)
 	{
 		if (av[i])
 			args_len_s += strlen(av[i]);
