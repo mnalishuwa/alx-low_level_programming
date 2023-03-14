@@ -27,7 +27,7 @@ char *argstostr(int ac, char **av)
 			args_len_s += strlen(av[i]);
 	}
 
-	args_len_s += (ac + ac - 1);
+	args_len_s += (2 * ac);
 
 	args_cnctd = malloc(args_len_s * sizeof(char));
 
