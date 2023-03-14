@@ -22,6 +22,7 @@ int **alloc_grid(int width, int height)
 
 	/* check if w, h negative or equal to zero or if malloc failed */
 	if (width <= 0 || height <= 0 || grid_2d == NULL)
+		free(grid_2d);
 		return (NULL);
 
 	/* initialize array */
