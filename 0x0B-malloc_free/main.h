@@ -22,4 +22,7 @@ void free_grid(int **grid, int height);
 /* _strlen - returns the length of a string */
 int _strlen(char *s);
 
+/* argstostr - concatenates all commandline args passed */
+char *argstostr(int ac, char **av);
+
 #endif
