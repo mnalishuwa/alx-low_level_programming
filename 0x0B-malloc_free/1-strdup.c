@@ -26,8 +26,8 @@ char *_strdup(char *str)
 	/* allocate memory */
 	str_cpy = malloc((len_s + 1) * sizeof(char));
 
-	/* check if str is NULL of if malloc() failed */
-	if (len_s == 0 || str_cpy == NULL)
+	/* check if malloc() failed */
+	if (str_cpy == NULL)
 		return (NULL);
 
 	/* duplicate string into str_copy */
