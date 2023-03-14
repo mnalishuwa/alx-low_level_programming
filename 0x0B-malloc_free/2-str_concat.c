@@ -16,10 +16,21 @@
 char *str_concat(char *s1, char *s2)
 {
 	char *str_cnctd; /* pointer to concatenated result */
-	int len_s1 = strlen(s1);
-	int len_s2 = strlen(s2);
-	int total_len = len_s1 + len_s2; /* length of concatenation */
+	int len_s1;
+	int len_s2;
+	int total_len; /* length of concatenation */
 	int i;
+
+	if (!s1 && !s2)
+		return (str_concat("", ""));
+	if (!s1 && s2)
+		return (str_concat("", s2));
+	if (s1 && !s2)
+		return (str_concat(s1, ""));
+
+	len_s1 = strlen(s1);
+	len_s2 = strlen(s2);
+	total_len = len_s1 + len_s2 + 1;
 
 	/* allocate necessary memory */
 	str_cnctd = malloc(total_len * sizeof(char));
@@ -35,6 +46,7 @@ char *str_concat(char *s1, char *s2)
 	/* copy s2 into str_cnctd */
 	for (i = 0; s2[i] != '\0'; i++)
 		str_cnctd[len_s1 + i] = s2[i]; /* copy s2 chars from s1 end */
+	str_cnctd[total_len] = '\0';
 
 	return (str_cnctd);
 }
