@@ -42,7 +42,8 @@ char *argstostr(int ac, char **av)
 			for (j = 0; j < len_arg; k++, j++)
 				args_cnctd[k] = av[i][j];
 			args_cnctd[k] = '\n';
-			args_cnctd[++k] = '\r';
+			if (i != ac)
+				args_cnctd[++k] = '\r';
 		}
 	}
 
