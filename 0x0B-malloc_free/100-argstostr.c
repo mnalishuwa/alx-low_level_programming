@@ -34,7 +34,7 @@ char *argstostr(int ac, char **av)
 	if (!args_cnctd)
 		return (NULL);
 
-	for (i = 1, k = 0; i <= ac; i++)
+	for (i = 0, k = 0; i <= ac; i++)
 	{
 		if (av[i])
 		{
