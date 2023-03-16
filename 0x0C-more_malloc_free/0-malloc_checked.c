@@ -11,7 +11,7 @@
  * Return: void pointer to the memory allocated
  */
 
-void *malloc_checked(unsigned int b);
+void *malloc_checked(unsigned int b)
 {
 	void *ptr;
 
