@@ -12,6 +12,7 @@
 
 int (*get_op_func(char *s))(int, int)
 {
+	/* create array of op_t structs that hold op function pointers & op */
 	op_t ops[] = {
 		{"+", op_add},
 		{"-", op_sub},
@@ -23,14 +24,16 @@ int (*get_op_func(char *s))(int, int)
 
 	int i;
 
-	i = 5;
+	i = 0;
 
-	while (s && (i - 1 > 0))
+	/* compare strings passed starting with the last non-null ops */
+	/* also check if string is non-null */
+	while (s && (i < 5))
 	{
-		if (!strcmp(s, ops[i - 1].op))
-			return (ops[i - 1].f);
-		i--;
+		if (!strcmp(s, ops[i].op))
+			return (ops[i].f); /* return op function pointer */
+		i++;
 	}
 
-	return (ops[i].f);
+	return (ops[i].f); /* return null if array processed without a match */
 }

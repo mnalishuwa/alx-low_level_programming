@@ -15,26 +15,32 @@ int main(int argc, char **argv)
 {
 	int result, a, b;
 
+	/* exit & signal error if number of arguments not exactly 3 */
 	if (argc - 1 != 3)
 	{
 		printf("Error\n");
 		exit(98);
 	}
 
+	/* exit with error signal if operator presented is invalid */
 	if (!get_op_func(argv[2]))
 	{
 		printf("Error\n");
 		exit(99);
 	}
 
-	if ((strcmp(argv[2], "/") && strcmp(argv[2], "%")) && argv[3] == 0)
+	/* convert args to ints */
+	a = atoi(argv[1]);
+	b = atoi(argv[3]);
+
+	/* exit with error if op is division and denominator is 0 */
+	if ((!strcmp(argv[2], "/") || !strcmp(argv[2], "%")) && b == 0)
 	{
 		printf("Error\n");
 		exit(100);
 	}
 
-	a = atoi(argv[1]);
-	b = atoi(argv[3]);
+
 	result = get_op_func(argv[2])(a, b);
 
 	printf("%d\n", result);
