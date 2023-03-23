@@ -13,6 +13,9 @@
 
 void print_name(char *name, void (*f)(char *))
 {
+	/* return if function pointer is NULL */
+	if (!f)
+		return;
 	/* call function and pass it name as argument */
 	(*f)(name); /* the asterix and parentheses can be omitted */
 }
