@@ -74,7 +74,7 @@ int get_specifier(char c)
 
 	i = 0;
 
-	while (spec[i].specifier != 0)
+	while (spec[i].specifier != 0 && i < 4)
 	{
 		if (c - spec[i].specifier == 0)
 			return (spec[i]._type);
