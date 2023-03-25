@@ -5,16 +5,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+typedef enum {NON_TYPE, CHAR, INT, FLOAT, STRING} types;
+
 /**
  * struct fmt - Struct format
  *
- * @fspecifier
+ * @specifier
  * @type
  */
 struct fmt_spec
 {
 	char specifier;
-	char *_type
+	types _type;
 };
 
 typedef struct fmt_spec format_spec;
@@ -31,5 +33,8 @@ void print_strings(const char *separator, const unsigned int n, ...);
 
 /* print_all - prints anything */
 void print_all(const char * const format, ...);
+
+/* get_specifier - return a valid type */
+int get_specifier(char c);
 
 #endif

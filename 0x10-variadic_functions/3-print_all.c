@@ -1,4 +1,4 @@
-#include "function_pointers.h"
+#include "variadic_functions.h"
 #include <string.h>
 
 /**
@@ -11,11 +11,12 @@
 
 void print_all(const char * const format, ...)
 {
-	int i;
+	int i, specifier;
 	char *s;
 	int count = strlen(format);
+	va_list args;
 
-	va_list(args, count);
+	va_start(args, format);
 
 	i = 0;
 	while (format && (i < count))
@@ -25,22 +26,22 @@ void print_all(const char * const format, ...)
 		{
 			switch (specifier)
 			{
-			case "%c":{
-				printf(specifier, va_arg(args, char));
+			case CHAR:{
+				printf("%c", va_arg(args, int));
 				break;
 			}
-			case "%i":{
-				printf(specifier, va_arg(args, int));
+			case INT:{
+				printf("%d", va_arg(args, int));
 				break;
 			}
-			case "%f":{
-				printf(specifier, va_arg(args, float));
+			case FLOAT:{
+				printf("%f", va_arg(args, double));
 				break;
 			}
-			case "%s":{
+			case STRING:{
 				s = va_arg(args, char *);
 				s = (s == NULL) ? "(nil)" : s;
-				printf(specifier, va_arg(args, char *));
+				printf("%s", s);
 				break;
 			}
 			}
@@ -58,22 +59,22 @@ void print_all(const char * const format, ...)
  *
  * @c: char, argument to check if it is a specifier
  *
- * Return: str, str representing a valid specifier or NULL
+ * Return: int, int representing a valid specifier or 0
  */
-char *get_specifier(char c)
+int get_specifier(char c)
 {
 	int i;
 	format_spec spec[] = {
-		{'c', "%c"},
-		{'i', "%d"},
-		{'f', "%f"},
-		{'s', "%s"},
-		{NULL, NULL}
+		{'c', CHAR},
+		{'i', INT},
+		{'f', FLOAT},
+		{'s', STRING},
+		{0, NON_TYPE}
 	};
 
-	int i = 0;
+	i = 0;
 
-	while (c && (i < 5))
+	while (spec[i].specifier != 0)
 	{
 		if (c - spec[i].specifier == 0)
 			return (spec[i]._type);
