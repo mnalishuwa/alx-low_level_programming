@@ -5,6 +5,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+ * struct fmt - Struct format
+ *
+ * @fspecifier
+ * @type
+ */
+struct fmt_spec
+{
+	char specifier;
+	char *_type
+};
+
+typedef struct fmt_spec format_spec;
+
+
 /* sum_them_all - sums all arguments passed */
 int sum_them_all(const unsigned int n, ...);
 
