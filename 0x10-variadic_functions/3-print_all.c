@@ -12,7 +12,7 @@
 void print_all(const char * const format, ...)
 {
 	int i;
-	char c;
+	char *s;
 	int count = strlen(format);
 
 	va_list(args, count);
@@ -48,6 +48,8 @@ void print_all(const char * const format, ...)
 		printf("%s", (i == count - 1) ? "" : ", ");
 	}
 	printf("\n");
+
+	va_end(args);
 }
 
 /**
