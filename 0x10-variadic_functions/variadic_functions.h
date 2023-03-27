@@ -5,13 +5,26 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef enum {NON_TYPE, CHAR, INT, FLOAT, STRING} types;
+/**
+ * types  -  define int for valid C types corresponding to format specifiers
+ * Description: enum to hold ints representing types
+ */
+typedef enum
+{
+	NON_TYPE,
+	CHAR,
+	INT,
+	FLOAT,
+	STRING
+} types;
 
 /**
- * struct fmt - Struct format
+ * struct fmt_spec - Struct format
  *
- * @specifier
- * @type
+ * @specifier: char, corresponding to a valid type
+ * @_type: unsigned int representing a type
+ *
+ * Description: struct to hold char specifying type and int for the type
  */
 struct fmt_spec
 {
@@ -35,6 +48,6 @@ void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 
 /* get_specifier - return a valid type */
-int get_specifier(char c);
+unsigned int get_specifier(char c);
 
 #endif

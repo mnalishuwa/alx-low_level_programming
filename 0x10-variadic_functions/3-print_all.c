@@ -11,15 +11,14 @@
 
 void print_all(const char * const format, ...)
 {
-	int i, specifier;
+	unsigned int i, specifier;
 	char *s;
-	int count = strlen(format);
 	va_list args;
 
 	va_start(args, format);
 
 	i = 0;
-	while (format && (i < count))
+	while (format && format[i] != '\0')
 	{
 		specifier = get_specifier(format[i]);
 		if (specifier)
@@ -45,8 +44,9 @@ void print_all(const char * const format, ...)
 				break;
 			}
 			}
+			printf("%s", (i == strlen(format) - 1) ? "" : ", ");
 		}
-		printf("%s", (i == count - 1) ? "" : ", ");
+		i++;
 	}
 	printf("\n");
 
@@ -61,9 +61,9 @@ void print_all(const char * const format, ...)
  *
  * Return: int, int representing a valid specifier or 0
  */
-int get_specifier(char c)
+unsigned int get_specifier(char c)
 {
-	int i;
+	unsigned int i;
 	format_spec spec[] = {
 		{'c', CHAR},
 		{'i', INT},
