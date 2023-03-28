@@ -18,10 +18,12 @@ void print_number(int n)
 	int temp, _digits, _remainder, result;
 
 	temp = n;
+	if (n == 0)
+		_putchar(ZERO);
 	if (n < 0)
 		_putchar(NEGATIVE_SIGN);
 	/* get the number of digits in the number */
-	for (_digits = 0; temp > 0; _digits++)
+	for (_digits = 0; (n < 0) ? (temp < 0): (temp > 0); _digits++)
 		temp = temp / 10;
 	/* loop per digit */
 	for (_digits--; _digits >= 0; _digits--)
