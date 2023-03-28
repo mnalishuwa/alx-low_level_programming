@@ -29,3 +29,6 @@ char *leet(char *);
 
 /* rot13 - applies a caesar cypher, shift +13 on a string s */
 char *rot13(char *);
+
+/* print_number - prints a number to stdout */
+void print_number(int n);
