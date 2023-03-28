@@ -26,13 +26,34 @@ void print_number(int n)
 	/* loop per digit */
 	for (_digits--; _digits >= 0; _digits--)
 	{
-		result = pow(10, _digits);
+		result = _pow_recursion(10, _digits);
 		_remainder = (n % result);
-		n = n / pow(10, _digits);
+		n = n / _pow_recursion(10, _digits);
 
 		if (n < 0)
 			n = -1 * n;
 		_putchar(n + ZERO);
 		n = _remainder;
 	}
+}
+
+
+/**
+ * _pow_recursion - return x ^ y
+ * Description: receives ints x, y and compute x^y
+ *
+ * @x: int arg 1
+ * @y: int arg 2
+ *
+ * Return: int, x^y
+ */
+
+int _pow_recursion(int x, int y)
+{
+	if (y < 0)
+		return (-1);
+	else if (y == 0)
+		return (1);
+	else
+		return (x * _pow_recursion(x, y - 1));
 }

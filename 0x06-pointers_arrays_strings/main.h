@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <unistd.h>
 
 /* _putchar - writes char to stdout */
@@ -32,3 +35,8 @@ char *rot13(char *);
 
 /* print_number - prints a number to stdout */
 void print_number(int n);
+
+/* _pow_recursion - returns x raised to power y */
+int _pow_recursion(int x, int y);
+
+#endif
