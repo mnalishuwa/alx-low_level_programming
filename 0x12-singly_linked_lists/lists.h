@@ -3,6 +3,9 @@
 
 #define ZERO 48
 #define MINUS_SIGN 45
+
+#include <stddef.h>
+
 /**
  * struct list_s - singly linked list
  * @str: string - (malloc'ed string)
@@ -17,6 +20,9 @@ typedef struct list_s
 	unsigned int len;
 	struct list_s *next;
 } list_t;
+
+/* _putchar - write a single char to stdout */
+int _putchar(char c);
 
 /* print_list - prints elements of linked list */
 size_t print_list(const list_t *h);
