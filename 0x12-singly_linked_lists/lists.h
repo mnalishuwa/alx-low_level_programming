@@ -1,9 +1,6 @@
 #ifndef LISTS_H
 #define LISTS_H
 
-#define ZERO 48
-#define MINUS_SIGN 45
-
 #include <stddef.h>
 #include <stdio.h>
 
