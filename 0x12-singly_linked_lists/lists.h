@@ -5,6 +5,7 @@
 #define MINUS_SIGN 45
 
 #include <stddef.h>
+#include <stdio.h>
 
 /**
  * struct list_s - singly linked list
