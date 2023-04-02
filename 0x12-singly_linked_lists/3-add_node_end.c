@@ -24,6 +24,13 @@ list_t *add_node_end(list_t **head, const char *str)
 	new_node->len = _strlen_(str);
 	new_node->next = NULL;
 
+	if (!current_node)
+	{
+		current_node = new_node;
+		*head = new_node;
+		return (new_node);
+	}
+
 	/* navigate to the end of the list */
 	while (current_node->next)
 		current_node = current_node->next;
