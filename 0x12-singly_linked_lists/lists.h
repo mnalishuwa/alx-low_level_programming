@@ -46,4 +46,7 @@ int _strlen_(const char *s);
 /* add_node_end - add a node to end of linked list */
 list_t *add_node_end(list_t **head, const char *str);
 
+/* free_list - frees memory allocated for a linked list_t */
+void free_list(list_t *head);
+
 #endif
