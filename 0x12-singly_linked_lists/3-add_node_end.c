@@ -42,14 +42,14 @@ list_t *add_node_end(list_t **head, const char *str)
 }
 
 /**
- * _strlen_ - get the length of a string
+ * __strlen_ - get the length of a string
  * Description: Return the length of a string
  *
  * @s: string args
  *
  * Return: int, length or s
  */
-int _strlen_(const char *s)
+int __strlen_(const char *s)
 {
 	int len_s = 0;
 
