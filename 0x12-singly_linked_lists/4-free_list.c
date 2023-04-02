@@ -20,7 +20,7 @@ void free_list(list_t *head)
 	}
 	next_node = current_node->next;
 
-	while(current_node)
+	while (current_node)
 	{
 		free(current_node->str);
 		free(current_node);
