@@ -41,5 +41,9 @@ void _print_number(int n);
 
 /* _strlen - return string length */
 int _strlen(char *s);
+int _strlen_(const char *s);
+
+/* add_node_end - add a node to end of linked list */
+list_t *add_node_end(list_t **head, const char *str);
 
 #endif
