@@ -39,4 +39,7 @@ void _print_string(char *s);
 /* _print_number - prints an int */
 void _print_number(int n);
 
+/* _strlen - return string length */
+int _strlen(char *s);
+
 #endif

@@ -21,8 +21,28 @@ list_t *add_node(list_t **head, const char *str)
 	}
 
 	(*temp).str = strdup(str);
+	(*temp).len = _strlen((*temp).str);
 	(*temp).next = *head;
 
 	*head = temp;
 	return (*head);
+}
+
+/**
+ * _strlen - get the length of a string
+ * Description: Return the length of a string
+ *
+ * @s: string args
+ *
+ * Return: int, length or s
+ */
+int _strlen(char *s)
+{
+	int len_s = 0;
+
+	if (!s)
+		return (0);
+	while (*s++)
+		len_s++;
+	return (len_s);
 }
