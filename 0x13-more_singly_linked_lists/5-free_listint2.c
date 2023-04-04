@@ -20,4 +20,5 @@ void free_listint2(listint_t **head)
 		if (current_node)
 			*head = current_node;
 	}
+	free(current_node);
 }
