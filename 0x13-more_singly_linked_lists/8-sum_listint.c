@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * int sum_listint - aggregate all int data in linked list
+ * sum_listint - aggregate all int data in linked list
  * Description: traverse each node in listint_t linked list and
  * sum each int member at each node
  *
