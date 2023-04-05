@@ -57,4 +57,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index);
 /* reverse_listint - reverses a singly linked list */
 listint_t *reverse_listint(listint_t **head);
 
+/* print_listint_safe - prints a list */
+size_t print_listint_safe(const listint_t *head);
+
 #endif
