@@ -1,0 +1,6 @@
+*~
+*#
+*.bak
+*.out
+main.c
+_putchar.c
