@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <string.h>
+#include <stdlib.h>
 
 /* _putchar - write a single char to stdout */
 int _putchar(char c);
@@ -29,5 +30,8 @@ int clear_bit(unsigned long int *n, unsigned int index);
 
 /* flip_bits - returns the number of bits to flip from n to m */
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
+
+/* get_endianness - check which endian system machine uses */
+int get_endianness(void);
 
 #endif
