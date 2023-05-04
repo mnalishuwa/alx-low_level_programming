@@ -16,9 +16,9 @@ int clear_bit(unsigned long int *n, unsigned int index)
 	if (n == NULL || index > 63)
 		return (-1);
 
-	bmask = 1 << index; /* seon index bit */
+	bmask = 1 << index; /* set on index bit */
 	bmask = ~bmask; /* create mask with all bits on except index */
 
-	*n = *n & bmask /* bitwise & value with mask to clear index bit only */
+	*n = *n & bmask; /* bitwise & value with mask to clear index bit only */
 	return (1);
 }
