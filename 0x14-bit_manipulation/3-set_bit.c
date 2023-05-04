@@ -16,7 +16,7 @@ int set_bit(unsigned long int *n, unsigned int index)
 	if (n == NULL || index > 63)
 		return (-1);
 
-	bmask  = (1 << index); 	/* create a mask setting on index bit */
+	bmask  = (1 << index); /* create a mask setting on index bit */
 
 	/* bitwise OR mask with the number, this will set value to 1 at index */
 	*n = *n | bmask;
