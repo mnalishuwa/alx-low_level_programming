@@ -13,7 +13,7 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	unsigned long int bmask;
 
-	if (index > 64 || index < 0)
+	if (index > 63)
 		return (-1);
 
 	bmask = _pow_recursion(2, index);
