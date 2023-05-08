@@ -12,35 +12,36 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t n_char, n_write;
+	ssize_t bytes_read, bytes_written;
 	int _textfile_desc;
-	char *current_char = malloc(letters * sizeof(char));
+	char *text_buf = malloc(letters * sizeof(char));
 
 	_textfile_desc = open(filename, O_RDONLY); /* Open file, readonly mode */
-	if (!filename || (_textfile_desc < 0))
+	if (!filename || (_textfile_desc < 0) || text_buf == NULL)
 	{ /* check if file name, check if the file was successfully opened */
 		close(_textfile_desc);
+		free(text_buf);
 		return (0);
 	}
-
-	/* read through file 1 character at a time */
-	n_char = read(_textfile_desc, current_char, letters);
-	if (n_char < 0)
+	/* read through specified number of chars into text_buf*/
+	bytes_read = read(_textfile_desc, text_buf, letters);
+	if (bytes_read < 0)
 	{ /* close file and return if read unsuccessful */
 		close(_textfile_desc);
+		free(text_buf);
 		return (0);
 	}
-	/* Write the char read to stdout */
-	n_write = write(STDOUT_FILENO, current_char, letters);
-	if (n_write < 0)
+	/* Write specified number of chars from text_buf to stdout*/
+	bytes_written = write(STDOUT_FILENO, text_buf, letters);
+	if (bytes_written < 0)
 	{ /* close file and return if write unsuccessful */
 		close(_textfile_desc);
+		free(text_buf);
 		return (0);
 	}
-
 	close(_textfile_desc); /* close file after read */
 
-	free(current_char);
+	free(text_buf);
 
-	return (n_write); /* return number of chars read */
+	return (bytes_written); /* return number of chars read */
 }
