@@ -17,7 +17,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	char *text_buf = malloc(letters * sizeof(char));
 
 	_textfile_desc = open(filename, O_RDONLY); /* Open file, readonly mode */
-	if (!filename || (_textfile_desc < 0) || text_buf == NULL)
+	if (filename == NULL || (_textfile_desc < 0) || text_buf == NULL)
 	{ /* check if file name, check if the file was successfully opened */
 		close(_textfile_desc);
 		free(text_buf);
@@ -43,5 +43,5 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	free(text_buf);
 
-	return (bytes_read); /* return number of chars read */
+	return (bytes_written); /* return number of chars read */
 }
