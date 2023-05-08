@@ -12,12 +12,11 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t n_char, bytes_written = 0;
+	ssize_t n_char, bytes_written = 0, total_read = 0;
 	int n_write, _textfile_desc;
 	char current_char;
 
 	_textfile_desc = open(filename, O_RDONLY); /* Open file, readonly mode */
-
 	if (!filename || (_textfile_desc < 0))
 	{ /* check if file name, check if the file was successfully opened */
 		close(_textfile_desc);
@@ -32,6 +31,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 			close(_textfile_desc);
 			return (0);
 		}
+		total_read += n_char;
 
 		/* Write the char read to stdout */
 		n_write = _putchar(current_char);
@@ -40,9 +40,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 			close(_textfile_desc);
 			return (0);
 		}
-		bytes_written++;
-		letters = letters;
-	} while (n_char > 0);
+		bytes_written += n_write;
+	} while (n_char > 0 && (size_t)bytes_written < letters);
 
 	close(_textfile_desc); /* close file after read */
 
