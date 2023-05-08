@@ -43,5 +43,5 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	free(text_buf);
 
-	return (bytes_written); /* return number of chars read */
+	return (bytes_read); /* return number of chars read */
 }
