@@ -25,7 +25,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 	/* read through specified number of chars into text_buf*/
 	bytes_read = read(_textfile_desc, text_buf, letters);
-	if (bytes_read < 0)
+	if (bytes_read == -1)
 	{ /* close file and return if read unsuccessful */
 		close(_textfile_desc);
 		free(text_buf);
@@ -33,7 +33,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 	/* Write specified number of chars from text_buf to stdout*/
 	bytes_written = write(STDOUT_FILENO, text_buf, letters);
-	if (bytes_written < 0)
+	if (bytes_written == -1)
 	{ /* close file and return if write unsuccessful */
 		close(_textfile_desc);
 		free(text_buf);
