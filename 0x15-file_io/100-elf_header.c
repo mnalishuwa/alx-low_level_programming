@@ -13,6 +13,7 @@
 int main(int argc, char **argv)
 {
 	int fdes;
+
 	ssize_t __attribute__((unused)) nread;
 	void *elf_buf[32];
 	char *os_abi, *ftype;
@@ -31,6 +32,11 @@ int main(int argc, char **argv)
 	nread = read(fdes, elf_buf, 32);
 	close(fdes);
 
+	if (is_elf(elf_buf))
+	{
+		perror("Error: not an ELF file\n");
+		exit(98);
+	}
 	printf("ELF Header:\n");
 	print_magic((unsigned char *)elf_buf);
 	elf_class((unsigned char *)elf_buf);
@@ -109,10 +115,13 @@ void elf_endian(unsigned char *ebuf)
 {
 	size_t data_offset = 5;
 	unsigned char data;
-	int complements = 2;
+	int complements = 1;
 	char *str = "'s complement little endian";
 
 	data = *(ebuf + data_offset);
+
+	if (-1 == ~0)
+		complements = 2;
 
 	if (data == 0x01)
 	{
