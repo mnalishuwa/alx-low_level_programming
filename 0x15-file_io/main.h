@@ -42,4 +42,6 @@ char *check_type(unsigned char *ebuf);
 
 void print_entry(char *fname, unsigned char *ebuf);
 
+void _print_eentry(unsigned char *ebuf);
+
 #endif

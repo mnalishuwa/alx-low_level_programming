@@ -47,43 +47,56 @@ int main(int argc, char **argv)
 	print_abi_version((unsigned char *)(elf_buf));
 	ftype = check_type((unsigned char *)(elf_buf));
 	printf("  %-35s%10s\n", "Type:", ftype);
-	print_entry(argv[1], (unsigned char *)elf_buf);
+	_print_eentry((unsigned char *)elf_buf);
 
 	return (0);
 }
 
 /**
- * print_entry - print entry addr
+ * _print_eentry - print entry addr
  * Description: print entry addr of ELF
  *
  * @ebuf: elf data
- * @fname: str, filename
  *
  * Return: void
  */
-void print_entry(char *fname, unsigned char *ebuf)
+void _print_eentry(unsigned char *ebuf)
 {
-	FILE *fp;
+	size_t e_entry_offset = 24, i = 0, addr_bytes = 4;
+	size_t class_offset = 4, endian_offset = 5;
+	unsigned char *e_entry = (unsigned char *)ebuf;
 
-	Elf32_Ehdr __attribute__((unused)) elf32hdr;
-	Elf64_Ehdr __attribute__((unused)) elf64hdr;
-	Elf64_Addr __attribute__((unused)) entry_point64;
-	Elf64_Addr __attribute__((unused)) entry_point32;
-
-	fp = fopen(fname, "rb");
-	if (*(ebuf + 4) == 0x02)
+	printf("  %-35s0x", "Entry point address:");
+	if (*(ebuf + class_offset) == 0x02) /* check if machine is ELF64 */
 	{
-		fread(&elf64hdr, sizeof(Elf64_Ehdr), 1, fp);
-		entry_point64 = elf64hdr.e_entry;
-		printf("  %-35s0x%lx\n", "Entry point address:", entry_point64);
+		addr_bytes = 8; /* number of bytes for eentry on ELF64 */
+		if (*(ebuf + endian_offset) == 0x01) /* check endianness */
+		{
+			i = e_entry_offset + addr_bytes - 1;
+			for (; i >= e_entry_offset; i--)
+				printf("%x", *(e_entry + i));
+		}
+		else
+		{
+			for (i = e_entry_offset; i < e_entry_offset + addr_bytes - 1; i++)
+				printf("%x", *(e_entry + i));
+		}
+		printf("\n");
+		return;
+	}
+
+	if (*(ebuf + endian_offset) == 0x01)
+	{
+		i = e_entry_offset + addr_bytes - 1;
+		for (; i >= e_entry_offset; i--)
+			printf("%x", *(e_entry + i));
 	}
 	else
 	{
-		fread(&elf32hdr, sizeof(Elf32_Ehdr), 1, fp);
-		entry_point32 = elf32hdr.e_entry;
-		printf("  %-35s0x%lx\n", "Entry point address:", entry_point32);
+		for (i = e_entry_offset; i < e_entry_offset + addr_bytes - 1; i++)
+			printf("%x", *(e_entry + i));
 	}
-	fclose(fp);
+	printf("\n");
 }
 
 /**
@@ -116,7 +129,8 @@ void elf_endian(unsigned char *ebuf)
 	size_t data_offset = 5;
 	unsigned char data;
 	int complements = 1;
-	char *str = "'s complement little endian";
+	char *lstr = "'s complement little endian";
+	char *bstr = "'s complement big endian";
 
 	data = *(ebuf + data_offset);
 
@@ -125,10 +139,10 @@ void elf_endian(unsigned char *ebuf)
 
 	if (data == 0x01)
 	{
-		printf("  %-35s%d%10s\n", "Data:", complements, str);
+		printf("  %-35s%d%10s\n", "Data:", complements, lstr);
 		return;
 	}
-	printf("  %-35s%d%10s\n", "Data:", complements, str);
+	printf("  %-35s%d%10s\n", "Data:", complements, bstr);
 }
 
 /**
