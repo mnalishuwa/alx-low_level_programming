@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 {
 	int fdes;
 
+	char *err = "Not an ELF file - it has the wrong magic bytes at the start";
 	ssize_t __attribute__((unused)) nread;
 	void *elf_buf[32];
 	char *os_abi, *ftype;
@@ -32,9 +33,9 @@ int main(int argc, char **argv)
 	nread = read(fdes, elf_buf, 32);
 	close(fdes);
 
-	if (is_elf(elf_buf))
+	if (is_elf(elf_buf) == 0)
 	{
-		perror("Error: not an ELF file\n");
+		write(STDERR_FILENO, err, 60);
 		exit(98);
 	}
 	printf("ELF Header:\n");
@@ -63,7 +64,7 @@ int main(int argc, char **argv)
 void _print_eentry(unsigned char *ebuf)
 {
 	size_t e_entry_offset = 24, i = 0, addr_bytes = 4;
-	size_t class_offset = 4, endian_offset = 5;
+	size_t class_offset = 4, endian_offset = 5, sigfig = 0;
 	unsigned char *e_entry = (unsigned char *)ebuf;
 
 	printf("  %-35s0x", "Entry point address:");
@@ -74,12 +75,20 @@ void _print_eentry(unsigned char *ebuf)
 		{
 			i = e_entry_offset + addr_bytes - 1;
 			for (; i >= e_entry_offset; i--)
-				printf("%x", *(e_entry + i));
+			{
+				sigfig += *(e_entry + i);
+				if (sigfig > 0)
+					printf("%x", *(e_entry + i));
+			}
 		}
 		else
 		{
 			for (i = e_entry_offset; i < e_entry_offset + addr_bytes - 1; i++)
-				printf("%x", *(e_entry + i));
+			{
+				sigfig += *(e_entry + i);
+				if (sigfig > 0)
+					printf("%x", *(e_entry + i));
+			}
 		}
 		printf("\n");
 		return;
@@ -89,12 +98,20 @@ void _print_eentry(unsigned char *ebuf)
 	{
 		i = e_entry_offset + addr_bytes - 1;
 		for (; i >= e_entry_offset; i--)
-			printf("%x", *(e_entry + i));
+		{
+			sigfig += *(e_entry + i);
+			if (sigfig > 0)
+				printf("%x", *(e_entry + i));
+		}
 	}
 	else
 	{
 		for (i = e_entry_offset; i < e_entry_offset + addr_bytes - 1; i++)
-			printf("%x", *(e_entry + i));
+		{
+			sigfig += *(e_entry + i);
+			if (sigfig > 0)
+				printf("%x", *(e_entry + i));
+		}
 	}
 	printf("\n");
 }
@@ -181,12 +198,12 @@ int is_elf(void *ebuf)
 	unsigned char a, b, c, d;
 	unsigned char *ebuf2 = (unsigned char *)ebuf;
 
-	a = *((unsigned char *)(ebuf2));
-	b = *((unsigned char *)(ebuf2 + 1));
-	c = *((unsigned char *)(ebuf2 + 2));
-	d = *((unsigned char *)(ebuf2 + 3));
+	a = *(ebuf2);
+	b = *(ebuf2 + 1);
+	c = *(ebuf2 + 2);
+	d = *(ebuf2 + 3);
 
-	return (a == 0x7F && b == 0x45 && c == 0x4C && d == 46);
+	return (a == 0x7f && b == 0x45 && c == 0x4c && d == 0x46);
 }
 
 /**
