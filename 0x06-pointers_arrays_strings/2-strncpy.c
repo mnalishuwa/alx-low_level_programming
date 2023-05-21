@@ -15,17 +15,14 @@
 
 char *_strncpy(char *dest, char *src, int n)
 {
-	int src_index, len_src;
+	int src_index;
 
-	len_src = strlen(src);
-
+	/* copy src contents to dest upto n bytes */
 	for (src_index = 0; src_index < n && *(src + src_index) != '\0'; src_index++)
 		*(dest + src_index) = *(src + src_index);
-
+	/* Pad the rest of the string with NULL bytes */
 	for (; src_index < n; src_index++)
 		*(dest + src_index) = '\0';
-
-	/* *(dest + src_index) = '\0'; */
 
 	return (dest);
 }
