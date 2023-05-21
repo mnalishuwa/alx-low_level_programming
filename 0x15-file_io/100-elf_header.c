@@ -13,8 +13,8 @@
 int main(int argc, char **argv)
 {
 	int fdes;
-
 	char *err = "Not an ELF file - it has the wrong magic bytes at the start";
+
 	ssize_t __attribute__((unused)) nread;
 	void *elf_buf[32];
 	char *os_abi, *ftype;
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 	os_abi = check_osabi((unsigned char *)(elf_buf));
 	printf("  %-35s%10s\n", "OS/ABI:", os_abi);
 	print_abi_version((unsigned char *)(elf_buf));
-	ftype = check_type((unsigned char *)(elf_buf));
+	ftype = check_type(elf_buf);
 	printf("  %-35s%10s\n", "Type:", ftype);
 	_print_eentry((unsigned char *)elf_buf);
 
@@ -73,21 +73,21 @@ void _print_eentry(unsigned char *ebuf)
 		addr_bytes = 8; /* number of bytes for eentry on ELF64 */
 		if (*(ebuf + endian_offset) == 0x01) /* check endianness */
 		{
-			i = e_entry_offset + addr_bytes - 1;
+			i = e_entry_offset + addr_bytes;
 			for (; i >= e_entry_offset; i--)
 			{
 				sigfig += *(e_entry + i);
 				if (sigfig > 0)
-					printf("%x", *(e_entry + i));
+					printf("%02x", *(e_entry + i));
 			}
 		}
 		else
 		{
-			for (i = e_entry_offset; i < e_entry_offset + addr_bytes - 1; i++)
+			for (i = e_entry_offset; i < e_entry_offset + addr_bytes; i++)
 			{
 				sigfig += *(e_entry + i);
 				if (sigfig > 0)
-					printf("%x", *(e_entry + i));
+					printf("%02x", *(e_entry + i));
 			}
 		}
 		printf("\n");
@@ -96,21 +96,21 @@ void _print_eentry(unsigned char *ebuf)
 
 	if (*(ebuf + endian_offset) == 0x01)
 	{
-		i = e_entry_offset + addr_bytes - 1;
+		i = e_entry_offset + addr_bytes;
 		for (; i >= e_entry_offset; i--)
 		{
 			sigfig += *(e_entry + i);
 			if (sigfig > 0)
-				printf("%x", *(e_entry + i));
+				printf("%02x", *(e_entry + i));
 		}
 	}
 	else
 	{
-		for (i = e_entry_offset; i < e_entry_offset + addr_bytes - 1; i++)
+		for (i = e_entry_offset; i < e_entry_offset + addr_bytes; i++)
 		{
 			sigfig += *(e_entry + i);
 			if (sigfig > 0)
-				printf("%x", *(e_entry + i));
+				printf("%02x", *(e_entry + i));
 		}
 	}
 	printf("\n");
@@ -296,10 +296,19 @@ void print_abi_version(unsigned char *ebuf)
  *
  * Return: str, file type
  */
-char *check_type(unsigned char *ebuf)
+char *check_type(void *ebuf)
 {
-	size_t type_byte = 16;
-	uint16_t *filetype = (uint16_t *)(ebuf + type_byte);
+	size_t type_offset = 16;
+	unsigned char *bo_buf = (unsigned char *)(ebuf);
+	unsigned short *filetype = (unsigned short *)(bo_buf + type_offset);
+
+	/* if machine is little endian then the most significant byte is in
+	 * the last byte address of an nbyte word, were n >= 2
+	 * since we have a short (2 bytes), we reverse the word if it's
+	 * little endian, by incrementing the address
+	 */
+	if (get_endianness())
+		filetype = (unsigned short *)(bo_buf + type_offset + 1);
 
 	switch (*filetype)
 	{
@@ -314,4 +323,28 @@ char *check_type(unsigned char *ebuf)
 	case 0xFFFF: return ("Processor Specific: (0xffff)");
 	}
 	return ("<unknown>: 0");
+}
+
+/**
+ * get_endianness - gets the endianness of the current machine
+ * Description: get the endianess of a linux system
+ *
+ * Return: int, 0 if big endian, 1 if little endian
+ */
+int get_endianness(void)
+{
+	int n;
+	unsigned char nth_byte, *nth_byte_addr;
+
+	n = 0x22000044;
+
+	nth_byte_addr = (unsigned char *)&n;
+	nth_byte = *nth_byte_addr;
+
+	/* nth_byte_addr is currently smallest address */
+	/* if least significant byte of n (0x44) is in nth_byte_addr */
+	/* then CPU is little endian, otherwise it is big endian */
+	if (nth_byte == 0x44)
+		return (1);
+	return (0);
 }

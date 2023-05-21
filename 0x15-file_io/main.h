@@ -38,10 +38,12 @@ void print_abi_version(unsigned char *ebuf);
 
 char *check_osabi(unsigned char *ebuf);
 
-char *check_type(unsigned char *ebuf);
+char *check_type(void *ebuf);
 
 void print_entry(char *fname, unsigned char *ebuf);
 
 void _print_eentry(unsigned char *ebuf);
+
+int get_endianness(void);
 
 #endif

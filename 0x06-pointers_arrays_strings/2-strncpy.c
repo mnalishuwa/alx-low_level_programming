@@ -21,12 +21,11 @@ char *_strncpy(char *dest, char *src, int n)
 
 	for (src_index = 0; src_index < n && *(src + src_index) != '\0'; src_index++)
 		*(dest + src_index) = *(src + src_index);
-	if (len_src < n)
-	{
-		for (src_index = src_index; src_index < n; src_index++)
-			*(dest + src_index) = '\0';
-	}
-	*(dest + src_index) = '\0';
+
+	for (; src_index < n; src_index++)
+		*(dest + src_index) = '\0';
+
+	/* *(dest + src_index) = '\0'; */
 
 	return (dest);
 }
