@@ -40,5 +40,12 @@ hash_table_t *hash_table_create(unsigned long int size);
 unsigned long int hash_djb2(const unsigned char *str);
 /* Get index for key */
 unsigned long int key_index(const unsigned char *key, unsigned long int size);
+/* create node */
+hash_node_t *create_node(const char *key, const char *value);
+/* add node to hash table */
+int hash_table_set(hash_table_t *ht, const char *key, const char *value);
+hash_node_t *add_node_end(hash_node_t **h, const char *key, const char *value);
+hash_node_t *add_node(hash_node_t **head, const char *key, const char *value);
+void free_hash_node_t(hash_node_t *node);
 
 #endif
