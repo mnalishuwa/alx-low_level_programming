@@ -39,33 +39,32 @@ hash_node_t *create_node(const char *key, const char *value)
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new_node;
 	unsigned long int idx;
 
-	if (table == NULL)
+	if (ht == NULL)
 		return (0);
 
-	idx = hash_function(key);
+	idx = hash_djb2((unsigned char *)key);
 
-	if (table->array[idx] == NULL)
+	if (ht->array[idx] == NULL)
 	{
-		table->array[idx] = add_node(&(table->array[idx]), key, value);
-		if (table->array[idx] == NULL)
+		ht->array[idx] = add_node(&(ht->array[idx]), key, value);
+		if (ht->array[idx] == NULL)
 			return (0);
 		return (1);
 	}
 	else
 	{
-		if (strcmp(table->array[idx]->key, key) == 0)
+		if (strcmp(ht->array[idx]->key, key) == 0)
 		{
-			free(table->array[idx]->value);
-			table->array[idx]->value = strdup(value);
+			free(ht->array[idx]->value);
+			ht->array[idx]->value = strdup(value);
 			return (1);
 		}
 		else
 		{
-			table->array[idx] = add_node(&(table->array[idx]), key, value);
-			if (table->array[idx] == NULL)
+			ht->array[idx] = add_node(&(ht->array[idx]), key, value);
+			if (ht->array[idx] == NULL)
 				return (0);
 			return (1);
 		}
