@@ -36,5 +36,7 @@ typedef struct hash_table_s
 
 /* Create hash table */
 hash_table_t *hash_table_create(unsigned long int size);
+/* Djb2 Hash Function */
+unsigned long int hash_djb2(const unsigned char *str);
 
 #endif
