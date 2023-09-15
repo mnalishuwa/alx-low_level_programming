@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
- * search_hash_table_t - searches table ADT for a key if exists
+ * hash_table_get - searches table ADT for a key if exists
  * Description: takes a pointer to the table ADT and searches
  * table for a particular key, returns the value if key exists
  * or returns NULL otherwise. returns a copy of the value
@@ -13,7 +13,7 @@
  *
  * Return: str value if found, else return null
  */
-char *hash_ht_get(const hash_ht_t *ht, const char *key)
+char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	hash_node_t *current_node;
 	unsigned long int location;

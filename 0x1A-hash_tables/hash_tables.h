@@ -48,6 +48,6 @@ hash_node_t *add_node_end(hash_node_t **h, const char *key, const char *value);
 hash_node_t *add_node(hash_node_t **head, const char *key, const char *value);
 void free_hash_node_t(hash_node_t *node);
 /* Search hash table */
-char *hash_ht_get(const hash_ht_t *ht, const char *key);
+char *hash_table_get(const hash_table_t *ht, const char *key);
 
 #endif
