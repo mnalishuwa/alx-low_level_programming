@@ -49,5 +49,9 @@ hash_node_t *add_node(hash_node_t **head, const char *key, const char *value);
 void free_hash_node_t(hash_node_t *node);
 /* Search hash table */
 char *hash_table_get(const hash_table_t *ht, const char *key);
+/* print hash table */
+void hash_table_print(const hash_table_t *ht);
+/* print linked list */
+size_t print_list(const hash_node_t *h);
 
 #endif
