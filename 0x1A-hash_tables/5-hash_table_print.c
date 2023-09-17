@@ -40,14 +40,17 @@ void hash_table_print(const hash_table_t *ht)
 
 size_t print_list(const hash_node_t *h)
 {
-	size_t elements = 0;
+	size_t elements = 0, first = 1;
 	const hash_node_t *current_node = h;
 
 	while (current_node)
 	{
 		elements++;
+		if (first)
+			printf(", ");
 		printf("'%s': '%s'", current_node->key, current_node->value);
 		current_node = current_node->next;
+		first = 0;
 	}
 	return (elements);
 }
