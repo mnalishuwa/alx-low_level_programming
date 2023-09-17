@@ -46,7 +46,7 @@ size_t print_list(const hash_node_t *h)
 	while (current_node)
 	{
 		elements++;
-		if (first)
+		if (!first)
 			printf(", ");
 		printf("'%s': '%s'", current_node->key, current_node->value);
 		current_node = current_node->next;
