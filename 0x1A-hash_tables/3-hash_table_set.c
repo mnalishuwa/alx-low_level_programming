@@ -46,29 +46,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	idx = key_index((unsigned char *)key, ht->size);
 
+	ht->array[idx] = add_node(&(ht->array[idx]), key, value);
 	if (ht->array[idx] == NULL)
-	{
-		ht->array[idx] = add_node(&(ht->array[idx]), key, value);
-		if (ht->array[idx] == NULL)
-			return (0);
-		return (1);
-	}
-	else
-	{
-		if (strcmp(ht->array[idx]->key, key) == 0)
-		{
-			free(ht->array[idx]->value);
-			ht->array[idx]->value = strdup(value);
-			return (1);
-		}
-		else
-		{
-			ht->array[idx] = add_node(&(ht->array[idx]), key, value);
-			if (ht->array[idx] == NULL)
-				return (0);
-			return (1);
-		}
-	}
+		return (0);
+	return (1);
 }
 
 /**
