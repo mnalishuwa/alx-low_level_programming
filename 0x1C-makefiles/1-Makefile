@@ -1,4 +1,4 @@
 all: school
 
-school: $(SRC)
+school: m.h $(SRC)
 	$(CC) $(SRC) -o school
