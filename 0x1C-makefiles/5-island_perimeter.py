@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 
+
 """
 Function to compute the perimeter
 of an island on an m x n grid
 """
+
 
 def island_perimeter(grid):
     """
