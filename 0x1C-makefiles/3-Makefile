@@ -19,6 +19,7 @@ clean:
 oclean:
 	$(RM) $(OBJ)
 
-fclean: clean oclean
+fclean:
+	$(RM) *~ *.swp $(NAME) *.o
 
 re: fclean all
