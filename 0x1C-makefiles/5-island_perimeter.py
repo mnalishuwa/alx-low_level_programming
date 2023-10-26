@@ -30,7 +30,7 @@ def island_perimeter(grid):
                               and (coord[j] >= 0 and coord[j] < columns)]
 
             if grid[row][column] == land:
-                perimeter += max_cell_perimeter - real_neighbors
+                perimeter += max_cell_perimeter - len(real_neighbors)
                 for coord in real_neighbors:
                     if grid[coord[i]][coord[j]] == water:
                         perimeter += 1
