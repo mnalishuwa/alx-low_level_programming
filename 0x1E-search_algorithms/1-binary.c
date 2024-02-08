@@ -20,19 +20,19 @@ int binary_search(int *array, size_t size, int value)
 		return (-1);
 
 	/* iterative binary search */
-	for (low = 0, high = size, mid = (high + low) / 2;
-	     low < high; mid = (high + low) / 2)
+	for (low = 0, high = size - 1, mid = (high + low) / 2;
+	     low <= high; mid = (high + low) / 2)
 	{
 		printf("Searching in array: ");
-		for (idx = low; idx < high; idx++)
-			(idx == high - 1) ? printf("%d\n", array[idx]) : printf("%d, ", array[idx]);
+		for (idx = low; idx <= high; idx++)
+			(idx == high) ? printf("%d\n", array[idx]) : printf("%d, ", array[idx]);
 		/* Start with the mid, reduce space by half each iteration */
 		if (array[mid] == value)
 			return (mid);
 		else if (value < array[mid])
-			high = mid;
+			high = mid - 1;
 		else
-			low = mid;
+			low = mid + 1;
 	}
 	return (-1);
 }
