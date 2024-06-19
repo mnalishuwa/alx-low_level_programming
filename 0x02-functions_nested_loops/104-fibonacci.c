@@ -55,7 +55,7 @@ void add_printfib(char *fib1, char *fib2, char *result,
 	int i, j, k;
 
 	k = size_num - 1;
-	for (j = 0; j < 95; j++)
+	for (j = 0; j < 96; j++)
 	{
 		for (i = (int)size_num - 1, carry = 0; i >= 0 && fib2[i] != '$'; i--)
 		{
@@ -79,6 +79,6 @@ void add_printfib(char *fib1, char *fib2, char *result,
 			printf("%hu", result[i]);
 			k++;
 		}
-		(j != 94) ? printf(", ") : printf("\n");
+		(j != 95) ? printf(", ") : printf("\n");
 	}
 }
